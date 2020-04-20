@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>yacc/lex语法学习之制作计算器 | TeRny</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="编译," />
+  
+
+  <meta name="description" content="mycal.l123456789101112131415161718192021222324%&amp;#123;#include &lt;stdio.h&gt;#include &quot;y.tab.h&quot;int yywrap(void)&amp;#123;return 1;&amp;#125;%&amp;#125;%%&quot;+&quot;             return ADD;&quot;-&quot;             return SUB;&quot;*&quot;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="yacc&#x2F;lex语法学习之制作计算器">
+<meta property="og:url" content="http://www.ternc.cn/2020/04/03/yacc-lex%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%88%B6%E4%BD%9C%E8%AE%A1%E7%AE%97%E5%99%A8/index.html">
+<meta property="og:site_name" content="TeRny">
+<meta property="og:description" content="mycal.l123456789101112131415161718192021222324%&amp;#123;#include &lt;stdio.h&gt;#include &quot;y.tab.h&quot;int yywrap(void)&amp;#123;return 1;&amp;#125;%&amp;#125;%%&quot;+&quot;             return ADD;&quot;-&quot;             return SUB;&quot;*&quot;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-03T06:05:24.000Z">
+<meta property="article:modified_time" content="2020-04-20T15:25:38.961Z">
+<meta property="article:author" content="TeRny">
+<meta property="article:tag" content="编译">
+<meta name="twitter:card" content="summary">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#mycal-l"><span class="toc-text">mycal.l</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mycal-y"><span class="toc-text">mycal.y</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bash"><span class="toc-text">bash</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-yacc-lex语法学习之制作计算器" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">yacc/lex语法学习之制作计算器</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2020.04.03</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>TeRny</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/%E7%BC%96%E8%AF%91%E7%9B%B8%E5%85%B3/">编译相关</a>
+  </span>
+
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h3 id="mycal-l"><a href="#mycal-l" class="headerlink" title="mycal.l"></a>mycal.l</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">%&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"y.tab.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">yywrap</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;<span class="keyword">return</span> <span class="number">1</span>;&#125;</span><br><span class="line">%&#125;</span><br><span class="line">%%</span><br><span class="line"><span class="string">"+"</span>             <span class="keyword">return</span> ADD;</span><br><span class="line"><span class="string">"-"</span>             <span class="keyword">return</span> SUB;</span><br><span class="line"><span class="string">"*"</span>             <span class="keyword">return</span> MUL;</span><br><span class="line"><span class="string">"/"</span>             <span class="keyword">return</span> DIV;</span><br><span class="line"><span class="string">"\n"</span>            <span class="keyword">return</span> CR;</span><br><span class="line">([<span class="number">1</span><span class="number">-9</span>][<span class="number">0</span><span class="number">-9</span>]*)|<span class="number">0</span>|([<span class="number">0</span><span class="number">-9</span>]+\.[<span class="number">0</span><span class="number">-9</span>]*) &#123;</span><br><span class="line">    <span class="keyword">double</span> temp;</span><br><span class="line">    <span class="built_in">sscanf</span>(yytext, <span class="string">"%lf"</span>, &amp;temp);<span class="comment">// %lf 双精度 %f单精度</span></span><br><span class="line">    yylval.double_value = temp;</span><br><span class="line">    <span class="keyword">return</span> DOUBLE_LITERAL;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">. &#123;</span><br><span class="line">    <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"input err\n"</span>);</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line">%%</span><br></pre></td></tr></table></figure>
+<h3 id="mycal-y"><a href="#mycal-y" class="headerlink" title="mycal.y"></a>mycal.y</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">%&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> YYDEBUG 1</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">yyerror</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">yylex</span><span class="params">()</span></span>;</span><br><span class="line">%&#125;</span><br><span class="line">%<span class="keyword">union</span> &#123;</span><br><span class="line">    <span class="keyword">int</span>          int_value;</span><br><span class="line">    <span class="keyword">double</span>       double_value;</span><br><span class="line">&#125;</span><br><span class="line">%token &lt;double_value&gt;      DOUBLE_LITERAL</span><br><span class="line">%token ADD SUB MUL DIV CR</span><br><span class="line">%type &lt;double_value&gt; expression term </span><br><span class="line">%%</span><br><span class="line">line_list</span><br><span class="line">    :<span class="built_in">line</span></span><br><span class="line">    |line_list <span class="built_in">line</span></span><br><span class="line"><span class="built_in">line</span></span><br><span class="line">    : expression CR</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"res:%lf\n"</span>, $<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">expression</span><br><span class="line">    : term</span><br><span class="line">    | expression ADD term</span><br><span class="line">    &#123;</span><br><span class="line">        $$ = $<span class="number">1</span> + $<span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    | expression SUB term</span><br><span class="line">    &#123;</span><br><span class="line">        $$ = $<span class="number">1</span> - $<span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    ;</span><br><span class="line">term</span><br><span class="line">    : DOUBLE_LITERAL</span><br><span class="line">    | term MUL DOUBLE_LITERAL </span><br><span class="line">    &#123;</span><br><span class="line">        $$ = $<span class="number">1</span> * $<span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    | term DIV DOUBLE_LITERAL</span><br><span class="line">    &#123;</span><br><span class="line">        $$ = $<span class="number">1</span> / $<span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    ;</span><br><span class="line">           </span><br><span class="line">%%</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">yyerror</span><span class="params">(<span class="keyword">char</span> <span class="keyword">const</span> *str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">extern</span> <span class="keyword">char</span> *yytext;</span><br><span class="line">    <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"parser error near %s\n"</span>, yytext);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">extern</span> <span class="keyword">int</span> <span class="title">yyparse</span><span class="params">(<span class="keyword">void</span>)</span></span>; <span class="comment">//extern 外置函数或变量</span></span><br><span class="line">    <span class="keyword">extern</span> FILE *yyin;</span><br><span class="line"></span><br><span class="line">    yyin = <span class="built_in">stdin</span>;</span><br><span class="line">    <span class="keyword">if</span> (yyparse()) &#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"Error ! Error ! Error !\n"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="bash"><a href="#bash" class="headerlink" title="bash"></a>bash</h3><blockquote>
+<p>windows平台</p>
+</blockquote>
+<blockquote>
+<p>bison 、flex </p>
+</blockquote>
+<blockquote>
+<p>编译器: tcc</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bison --yacc -d mycalc.y</span><br><span class="line">flex mycalc.l</span><br><span class="line">tcc y.tab.c lex.yy.c</span><br></pre></td></tr></table></figure>
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持acmesimple</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2020/04/03/nodejs%E7%AE%80%E5%8D%95%E8%BF%9B%E7%A8%8B%E5%AE%88%E6%8A%A4%E7%A4%BA%E4%BE%8B/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2020/04/03/nodejs%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95API%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+    <div id="comment" class="vcomment" ></div>
+    <script>
+        var notify = 'false' == true ? true : false;
+        var verify = 'false' == true ? true : false;
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+            return GUEST_INFO.indexOf(item) > -1
+        });
+        guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+        window.valine = new Valine({
+            el: '.vcomment',
+            notify: notify,
+            verify: verify,
+            appId: "cBFsyWHGVtA3saktkV0CRwPB-gzGzoHsz",
+            appKey: "1wexG3tqp7LoykK9NpnWRQDt",
+            avatar:'mm',
+            placeholder: "ヾﾉ≧∀≦)o 来呀！快活呀！",
+            guest_info:guest_info,
+            pageSize:'10'
+        });
+    </script>
+  
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>hexo之fexo博客搭建 | TeRny</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Hexo," />
+  
+
+  <meta name="description" content="安装12$ cd my-blog$ git clone git@github.com:forsigner&#x2F;fexo.git themes&#x2F;fexo 启用打开博客根目录的 _config.yml 设为 theme: fexo 升级123$ cd themes&#x2F;fexo$ git commit -am ‘update’$ git pull 配置主题主题配置全部在theme&#x2F;fexo里面完成，所里下面所">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo之fexo博客搭建">
+<meta property="og:url" content="http://www.ternc.cn/2019/04/02/hexo%E4%B9%8Bfexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:site_name" content="TeRny">
+<meta property="og:description" content="安装12$ cd my-blog$ git clone git@github.com:forsigner&#x2F;fexo.git themes&#x2F;fexo 启用打开博客根目录的 _config.yml 设为 theme: fexo 升级123$ cd themes&#x2F;fexo$ git commit -am ‘update’$ git pull 配置主题主题配置全部在theme&#x2F;fexo里面完成，所里下面所">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-04-02T14:20:05.000Z">
+<meta property="article:modified_time" content="2020-04-20T15:25:38.958Z">
+<meta property="article:author" content="TeRny">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启用"><span class="toc-text">启用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#升级"><span class="toc-text">升级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置主题"><span class="toc-text">配置主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置基本信息"><span class="toc-text">设置基本信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置头像"><span class="toc-text">设置头像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置favicon"><span class="toc-text">设置favicon</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置SEO关键词"><span class="toc-text">设置SEO关键词</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义博客名的字体"><span class="toc-text">自定义博客名的字体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置首页内容"><span class="toc-text">设置首页内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置首页导航"><span class="toc-text">设置首页导航</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置页面导航"><span class="toc-text">设置页面导航</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置页面导航样式"><span class="toc-text">设置页面导航样式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置面包屑"><span class="toc-text">设置面包屑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置盒子"><span class="toc-text">设置盒子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置文章标题对齐方式"><span class="toc-text">设置文章标题对齐方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启用分类页面"><span class="toc-text">启用分类页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启用标签页面"><span class="toc-text">启用标签页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启用友链页面"><span class="toc-text">启用友链页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启用关于页面"><span class="toc-text">启用关于页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启用项目页面"><span class="toc-text">启用项目页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启用搜索页面"><span class="toc-text">启用搜索页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启用统计"><span class="toc-text">启用统计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启用评论"><span class="toc-text">启用评论</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-hexo之fexo博客搭建" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">hexo之fexo博客搭建</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.04.02</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>TeRny</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/APP/">APP</a>
+  </span>
+
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> my-blog</span><br><span class="line">$ git <span class="built_in">clone</span> git@github.com:forsigner/fexo.git themes/fexo</span><br></pre></td></tr></table></figure>
+<h3 id="启用"><a href="#启用" class="headerlink" title="启用"></a>启用</h3><p>打开博客根目录的 _config.yml 设为 theme: fexo</p>
+<h3 id="升级"><a href="#升级" class="headerlink" title="升级"></a>升级</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> themes/fexo</span><br><span class="line">$ git commit -am ‘update’</span><br><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
+<h3 id="配置主题"><a href="#配置主题" class="headerlink" title="配置主题"></a>配置主题</h3><p>主题配置全部在theme/fexo里面完成，所里下面所有配置指的是配置theme/fexo/_config.yml</p>
+<h3 id="设置基本信息"><a href="#设置基本信息" class="headerlink" title="设置基本信息"></a>设置基本信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">blog_name: Forsigner</span><br><span class="line">slogan: Find the bug of the world</span><br></pre></td></tr></table></figure>
+<h3 id="设置头像"><a href="#设置头像" class="headerlink" title="设置头像"></a>设置头像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">avatar: /images/avatar.jpg</span><br><span class="line"><span class="comment"># or absolute url</span></span><br><span class="line">avatar: https://avatars0.githubusercontent.com/u/2668081?v=3&amp;s=460</span><br></pre></td></tr></table></figure>
+<h3 id="设置favicon"><a href="#设置favicon" class="headerlink" title="设置favicon"></a>设置favicon</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">favicon: &#x2F;favicon.ico</span><br></pre></td></tr></table></figure>
+<h3 id="设置SEO关键词"><a href="#设置SEO关键词" class="headerlink" title="设置SEO关键词"></a>设置SEO关键词</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keywords: forsigner,前端,设计,Hexo主题,前端开发,用户体验,设计,frontend,design,nodejs,JavaScript</span><br></pre></td></tr></table></figure>
+<h3 id="自定义博客名的字体"><a href="#自定义博客名的字体" class="headerlink" title="自定义博客名的字体"></a>自定义博客名的字体</h3><p>由于中文字体文件太大，有的快10M，所以 Fexo 没有引入中文字体，导致博客名有点难看。<br>但是可以通过提取字体来减小字体文件大小，让字体只有几KB。<br>一下步骤可以让你实现自定义博客名字体，包括英文和中文：</p>
+<ol>
+<li><p>下载免费可用的ttf格式字体</p>
+</li>
+<li><p>利用 Web-Fontmin 提取字体，然后下载 Web 字体和样式</p>
+</li>
+<li><p>在博客根目录的ssource文件夹新建两个子目录: fonts 和 css</p>
+</li>
+<li><p>把下载的字体方式fonts文件夹，把CSS文件放入css文件夹</p>
+</li>
+<li><p>修改theme/fexo/_config.yml：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">这是css文件里的font-familiy的值 ,例如里面是 font-familiy: “myfontName”</span><br><span class="line">blog_name_font_familiy: myFontName</span><br><span class="line"></span><br><span class="line">fonts_css_path:</span><br><span class="line">- &#x2F;css&#x2F;calligraffittiregular.css</span><br><span class="line">- &#x2F;css&#x2F;second-font.css</span><br></pre></td></tr></table></figure>
+<h3 id="设置首页内容"><a href="#设置首页内容" class="headerlink" title="设置首页内容"></a>设置首页内容</h3><p>你可以设置是否在首页直接显示文章</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">init_page_content: HOME_NAV  # HOME_NAV | POST</span><br></pre></td></tr></table></figure>
+<h3 id="设置首页导航"><a href="#设置首页导航" class="headerlink" title="设置首页导航"></a>设置首页导航</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">home_nav:</span><br><span class="line">    - name: Blog</span><br><span class="line">    url: /archives</span><br><span class="line">    - name: Github</span><br><span class="line">    url: https://github.com/forsigner</span><br><span class="line">    target: _blank</span><br><span class="line">    - name: Douban</span><br><span class="line">    url: http://www.douban.com/people/forsigner/</span><br><span class="line">    target: _blank</span><br><span class="line">    - name: Twitter</span><br><span class="line">    url: https://twitter.com/forsigner</span><br><span class="line">    target: _blank</span><br></pre></td></tr></table></figure>
+<h3 id="设置页面导航"><a href="#设置页面导航" class="headerlink" title="设置页面导航"></a>设置页面导航</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">page_nav:</span><br><span class="line">    - 博客: &#x2F;archives&#x2F;</span><br><span class="line">    - 分类: &#x2F;category&#x2F;</span><br><span class="line">    - 标签: &#x2F;tag&#x2F;</span><br><span class="line">    - 友链: &#x2F;link&#x2F;</span><br><span class="line">    - 关于: &#x2F;about&#x2F;</span><br><span class="line">    - RSS: &#x2F;atom.xml</span><br></pre></td></tr></table></figure>
+<h3 id="设置页面导航样式"><a href="#设置页面导航样式" class="headerlink" title="设置页面导航样式"></a>设置页面导航样式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">page_nav_style: CIRCLE  # CIRCLE|ROUND_RECT</span><br></pre></td></tr></table></figure>
+<h3 id="设置面包屑"><a href="#设置面包屑" class="headerlink" title="设置面包屑"></a>设置面包屑</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">breadcrumb:</span><br><span class="line">    isShow: true # true|fase</span><br></pre></td></tr></table></figure>
+<h3 id="设置盒子"><a href="#设置盒子" class="headerlink" title="设置盒子"></a>设置盒子</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">toolbox:</span><br><span class="line">    isShow: true # true|fase</span><br></pre></td></tr></table></figure>
+<h3 id="设置文章标题对齐方式"><a href="#设置文章标题对齐方式" class="headerlink" title="设置文章标题对齐方式"></a>设置文章标题对齐方式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">post:</span><br><span class="line">    header_align: center # left|center</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<hr/>
+
+<h3 id="启用分类页面"><a href="#启用分类页面" class="headerlink" title="启用分类页面"></a>启用分类页面</h3><ol>
+<li><p>在博客根目录执行 <code>hexo new page category</code></p>
+</li>
+<li><p>修改<code>my-blog/source/category/index.md</code>里面的内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">—</span><br><span class="line">title: category</span><br><span class="line">layout: category</span><br><span class="line">comments: false</span><br><span class="line">—</span><br></pre></td></tr></table></figure>
+<h3 id="启用标签页面"><a href="#启用标签页面" class="headerlink" title="启用标签页面"></a>启用标签页面</h3></li>
+<li><p>在博客根目录执行<code>hexo new page tag</code></p>
+</li>
+<li><p>修改<code>my-blog/source/tag/index.md</code>里面的内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">—</span><br><span class="line">title: tag</span><br><span class="line">layout: tag</span><br><span class="line">comments: false</span><br><span class="line">—</span><br></pre></td></tr></table></figure>
+<h3 id="启用友链页面"><a href="#启用友链页面" class="headerlink" title="启用友链页面"></a>启用友链页面</h3></li>
+<li><p>在博客根目录执行 <code>hexo new page link</code></p>
+</li>
+<li><p>修改<code>my-blog/source/tag/index.md</code>里面的内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">—</span><br><span class="line">title: link</span><br><span class="line">layout: link</span><br><span class="line">comments: false</span><br><span class="line">—</span><br></pre></td></tr></table></figure>
+<h3 id="启用关于页面"><a href="#启用关于页面" class="headerlink" title="启用关于页面"></a>启用关于页面</h3></li>
+<li><p>在博客根目录执行 <code>hexo new page about</code></p>
+</li>
+<li><p>修改<code>my-blog/source/about/index.md</code>里面的内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">—</span><br><span class="line">title: about</span><br><span class="line">layout: about</span><br><span class="line">comments: false</span><br><span class="line">—</span><br></pre></td></tr></table></figure>
+<h3 id="启用项目页面"><a href="#启用项目页面" class="headerlink" title="启用项目页面"></a>启用项目页面</h3></li>
+<li><p>在博客根目录执行 <code>hexo new page project</code></p>
+</li>
+<li><p>修改<code>my-blog/source/project/index.md</code>里面的内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">—</span><br><span class="line">title: project</span><br><span class="line">layout: project</span><br><span class="line">comments: false</span><br><span class="line">—</span><br></pre></td></tr></table></figure>
+<h3 id="启用搜索页面"><a href="#启用搜索页面" class="headerlink" title="启用搜索页面"></a>启用搜索页面</h3></li>
+<li><p>在博客根目录执行 <code>hexo new page search</code></p>
+</li>
+<li><p>修改<code>my-blog/source/search/index.md</code>里面的内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">—</span><br><span class="line">title: search</span><br><span class="line">layout: search</span><br><span class="line">comments: false</span><br><span class="line">—</span><br></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li>然后安装 Hexo 插件 <code>hexo-search</code> (重要)<br>先进入 blog 的根目录<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd my-blog</span><br><span class="line">$ npm install hexo-search –save</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<hr>
+
+<h3 id="启用统计"><a href="#启用统计" class="headerlink" title="启用统计"></a>启用统计</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">google_analytics:</span><br><span class="line">baidu_analytics: 57e94d016sfsf1fba3xxxx8a2b0263af0</span><br></pre></td></tr></table></figure>
+<h3 id="启用评论"><a href="#启用评论" class="headerlink" title="启用评论"></a>启用评论</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">disqus_shortname: forsigner</span><br><span class="line"># duoshuo_shortname: forsigner</span><br></pre></td></tr></table></figure>
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持acmesimple</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="hide pull-left" href="/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2019/04/03/liunx%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+    <div id="comment" class="vcomment" ></div>
+    <script>
+        var notify = 'false' == true ? true : false;
+        var verify = 'false' == true ? true : false;
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+            return GUEST_INFO.indexOf(item) > -1
+        });
+        guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+        window.valine = new Valine({
+            el: '.vcomment',
+            notify: notify,
+            verify: verify,
+            appId: "cBFsyWHGVtA3saktkV0CRwPB-gzGzoHsz",
+            appKey: "1wexG3tqp7LoykK9NpnWRQDt",
+            avatar:'mm',
+            placeholder: "ヾﾉ≧∀≦)o 来呀！快活呀！",
+            guest_info:guest_info,
+            pageSize:'10'
+        });
+    </script>
+  
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
